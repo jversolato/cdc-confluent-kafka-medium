@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "00c70322-5d29-420c-86e7-8d0597c451d3",
+		"name": "Collection CDC Kafka",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1579145",
+		"_collection_link": "https://bold-shadow-3964.postman.co/workspace/teste~23d7edb5-fd9a-4d60-85c7-6d4c2ab74887/collection/1579145-00c70322-5d29-420c-86e7-8d0597c451d3?action=share&source=collection_link&creator=1579145"
+	},
+	"item": [
+		{
+			"name": "connectors",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic STRING_BASE_64",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"db_postgrescdc\",\n  \"config\": {\n    \"connector.class\": \"PostgresCdcSource\",\n    \"name\": \"db_postgrescdc\",\n    \"kafka.auth.mode\": \"KAFKA_API_KEY\",\n    \"kafka.api.key\": \"SUA_API_KEY\",\n    \"kafka.api.secret\": \"SUA_SECRET\",\n    \"database.hostname\": \"SEU_HOST_BANCO_DE_DADOS\",\n    \"database.port\": \"5432\",\n    \"database.user\": \"USER_BANCO_DADOS\",\n    \"database.password\": \"SENHA_BANCO_DE_DADOS\",\n    \"database.dbname\": \"teste-cdc\",\n    \"database.server.name\": \"teste-cdc\",\n    \"database.sslmode\": \"require\",\n    \"table.include.list\": \"public.categories,public.customers\",\n    \"snapshot.mode\": \"initial\",\n    \"slot.name\": \"db_debezium_confluent\",\n    \"heartbeat.interval.ms\": \"300000\",\n    \"topic.creation.enable\": \"true\",\n    \"topic.creation.default.replication.factor\": \"3\",\n    \"topic.creation.default.partitions\": \"10\",\n    \"decimal.handling.mode\": \"string\",\n    \"output.data.format\": \"AVRO\",\n    \"after.state.only\": \"false\",\n    \"output.key.format\": \"AVRO\",\n    \"tasks.max\": \"1\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.confluent.cloud/connect/v1/environments/env-nydko6/clusters/lkc-okym3j/connectors",
+					"protocol": "https",
+					"host": [
+						"api",
+						"confluent",
+						"cloud"
+					],
+					"path": [
+						"connect",
+						"v1",
+						"environments",
+						"env-nydko6",
+						"clusters",
+						"lkc-okym3j",
+						"connectors"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
